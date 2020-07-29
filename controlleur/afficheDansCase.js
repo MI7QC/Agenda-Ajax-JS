@@ -5,13 +5,6 @@ import {
 
 export function afficheDansCase(serveurDate, idCalendrier) {
 
-    console.log({
-        serveurDate,
-        idCalendrier
-    });
-    //eTrDate = document.getElementById(dateDuServeur.date);
-    //console.log(eTrDate);
-
 
     serveurDate.forEach((dateDuServeur, index) => {
 
@@ -56,7 +49,6 @@ export function afficheDansCase(serveurDate, idCalendrier) {
                     eTrEvenement.appendChild(ePEvenement).appendChild(eIcone);
                     eTrEvenement.appendChild(ePEvenement).setAttribute("class", "fas fa-trash");
                     ePEvenement.addEventListener("click", function() {
-                        console.log(Object.values(dateDuServeur)[0]);
                         let id = Object.values(dateDuServeur)[0];
                         suprimerEvenement(id);
                     })
@@ -72,7 +64,6 @@ export function afficheDansCase(serveurDate, idCalendrier) {
 
                     // bind le click au bouton edit
                     ePEvenement.addEventListener("click", function() {
-                        console.log(Object.values(serveurDate[index])[0]);
                         let id = Object.values(serveurDate[index])[0];
                         RecupererId(id)
 
@@ -80,6 +71,7 @@ export function afficheDansCase(serveurDate, idCalendrier) {
 
                         modal.style.display = "block";
                         remplirFormulaire(dateDuServeur)
+
 
                         // Backend: modifier l'evenement
                     })
@@ -91,7 +83,6 @@ export function afficheDansCase(serveurDate, idCalendrier) {
 
     // fonction suprimer evenement 
     function suprimerEvenement(id) {
-        console.log("suprimerEvenement", id);
         let ajax = new XMLHttpRequest();
         let method = "DELETE";
         let url = "model/suprimerEvenement.php";
@@ -111,7 +102,6 @@ export function afficheDansCase(serveurDate, idCalendrier) {
         ajax.onreadystatechange = function() {
 
             if (this.readyState == 4 && this.status == 200) {
-                console.log("je suis evenement suprimer");
 
             }
         }
@@ -119,7 +109,6 @@ export function afficheDansCase(serveurDate, idCalendrier) {
     }
     // fonction recupere id evenement 
     function RecupererId(id) {
-        console.log("RecupererId", id);
         let ajax = new XMLHttpRequest();
         let method = "GET";
         let url = "model/RecupererId.php";
@@ -139,7 +128,7 @@ export function afficheDansCase(serveurDate, idCalendrier) {
         ajax.onreadystatechange = function() {
 
             if (this.readyState == 4 && this.status == 200) {
-                console.log("je suis evenement recupereID function");
+
 
             }
         }

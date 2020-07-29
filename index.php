@@ -340,8 +340,8 @@
     }
 
     function openNav() {
-      document.getElementById("mySidebar").style.width = "925px";
-      document.getElementById("main").style.marginLeft = "925px";
+      document.getElementById("mySidebar").style.width = "950px";
+      document.getElementById("main").style.marginLeft = "950px";
     }
 
     function closeNav() {

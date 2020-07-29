@@ -1,6 +1,10 @@
-import {mois} from "./utiliter";
+import {
+    mois
+} from "./utiliter";
 
-import {afficheDansCase} from "./afficheDansCase";
+import {
+    afficheDansCase
+} from "./afficheDansCase";
 
 export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee, semaine = 0) {
     let compteurMois = moisEnChiffre;
@@ -11,17 +15,17 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
     let h2 = document.createElement("h2");
 
     // trouve le nombre de jour dans chacun des mois
-    let getDaysInMonth = function (compteurMois, compteurAnnee) {
+    let getDaysInMonth = function(compteurMois, compteurAnnee) {
         return new Date(compteurAnnee, (compteurMois + 1), 0).getDate();
     };
-    
+
     // creation grille de la date
     let table = document.createElement("table");
     document.getElementById("separation").appendChild(table);
 
     function supprimerLaGrille() {
         // Enlever le html
-        table.innerHTML = ""; 
+        table.innerHTML = "";
 
         // reset les donnees
         let compteTab = tabDate.length
@@ -30,7 +34,7 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
 
     function creerGrille() {
         let moisEnLettre = mois(compteurMois)
-        let daysInMonth = getDaysInMonth(compteurMois, annee);   
+        let daysInMonth = getDaysInMonth(compteurMois, annee);
         let jourDuMois = (compteurSemaine * 7) + 1;
         let premierJour = (compteurSemaine * 7) + 1;
         dernierJour = (compteurSemaine * 7) + 7;
@@ -44,25 +48,24 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
 
         supprimerLaGrille()
 
- 
+
         let eTr = document.createElement("tr");
 
         table.appendChild(eTr);
         for (let j = 0; j < 7; j++) {
-            
+
             let eTd = document.createElement("td");
-            
+
             if (jourDuMois < daysInMonth + 1) {
                 let dateString = compteurAnnee + "-" + (compteurMois + 1).toString().padStart(2, 0) + "-" + jourDuMois.toString().padStart(2, 0)
                 eTr.appendChild(eTd).innerHTML = jourDuMois;
                 eTd.setAttribute("id", "date-" + dateString);
 
                 // ajout des valeur sdans le form ajout evenement quand click
-                eTd.addEventListener("click", function (evt) {
+                eTd.addEventListener("click", function(evt) {
 
                     let dateSelectionner = evt.target.id;
                     let dateSelectionnerValue = dateSelectionner.substr(5)
-                    console.log(dateSelectionnerValue);
 
                     document.getElementById("date").innerHTML = dateSelectionner;
                     document.getElementById("date").setAttribute("value", dateSelectionnerValue)
@@ -81,7 +84,7 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
 
         afficheDansCase(serveurDate, tabDate);
     }
-    
+
     creerGrille()
 
     /*
@@ -91,7 +94,7 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
     let btnPrecedent = $('#prev')
 
     btnSuivant.off()
-    btnSuivant.on("click", function(){
+    btnSuivant.on("click", function() {
         compteurSemaine += 1
         let dernierJourDuMois = new Date(compteurAnnee, compteurMois + 1, 0).getDate();
 
@@ -99,32 +102,32 @@ export function afficheGrilleSemaine(tabDate, serveurDate, moisEnChiffre, annee,
             compteurSemaine = 0;
             compteurMois += 1;
         }
-        
-        if (compteurMois > 11){
+
+        if (compteurMois > 11) {
             compteurMois = 0;
             compteurAnnee += 1;
         }
-        
+
         localStorage.setItem('compteurMois', compteurMois)
         creerGrille();
     });
 
     btnPrecedent.off()
-    btnPrecedent.on("click", function(){
+    btnPrecedent.on("click", function() {
         let dernierJourDuMois = new Date(compteurAnnee, compteurMois, 0).getDate();
         compteurSemaine -= 1
-        
+
         if (compteurSemaine * 7 < 0) {
             let dernierSemaineMois = Math.floor(dernierJourDuMois / 7)
             compteurSemaine = dernierSemaineMois;
             compteurMois -= 1;
         }
 
-        if (compteurMois < 0){
+        if (compteurMois < 0) {
             compteurMois = 11;
             compteurAnnee -= 1;
         }
-        
+
         localStorage.setItem('compteurMois', compteurMois)
         creerGrille();
     });

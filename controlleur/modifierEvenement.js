@@ -6,6 +6,7 @@ export function remplirFormulaire(evt) {
     let eStartdate = document.querySelector('#formModifierEvenement [name=startdate]')
     let eEnddate = document.querySelector('#formModifierEvenement [name=enddate]')
 
+
     const {
         id,
         titre,
@@ -20,9 +21,10 @@ export function remplirFormulaire(evt) {
     let minuteDebut = +stardt.match(/\d{4}-\d\d-\d\d (\d\d):(\d\d)/)[2]
     let heureFin = +enddt.match(/\d{4}-\d\d-\d\d (\d\d):(\d\d)/)[1]
     let minuteFin = +enddt.match(/\d{4}-\d\d-\d\d (\d\d):(\d\d)/)[2]
+    let categorieM = categorie.match(/^[A-Za-z]*/)
 
 
-
+    let eCategorieM = $(`#categorieM option[value=${categorieM}]`);
     let eHeureDebut = $(`#heureDebutModifier option[value=${heureDebut}]`);
     let eMinuteDebut = $(`#minuteDebutModifier option[value=${minuteDebut}]`);
     let eHeureFin = $(`#heureFinModifier option[value=${heureFin}]`);
@@ -34,6 +36,7 @@ export function remplirFormulaire(evt) {
     eDescription.value = description
     eStartdate.value = stardt.substring(0, 10)
     eEnddate.value = enddt.substring(0, 10)
+    eCategorieM.attr('selected')
     eHeureDebut.attr('selected', 'selected')
     eMinuteDebut.attr('selected', 'selected')
     eHeureFin.attr('selected', 'selected')

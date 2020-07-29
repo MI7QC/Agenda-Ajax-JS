@@ -18,7 +18,7 @@ export function ajoutEvenement() {
             let enddt = date + " " + heureFin + ":" + minuteFin;
 
 
-            console.log("je suis ici ", date, titre, description, categorie, stardt, enddt);
+
 
 
             ajoutDonnee(date, titre, description, categorie, stardt, enddt);

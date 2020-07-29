@@ -23,7 +23,6 @@ import {
     soumettreFormulaire
 } from "../controlleur/modifierEvenement"
 
-console.log("je suis dans le main");
 
 let mois = localStorage.getItem('compteurMois')
 
