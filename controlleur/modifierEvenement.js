@@ -5,6 +5,7 @@ export function remplirFormulaire(evt) {
     let eDescription = document.querySelector('#formModifierEvenement [name=description]')
     let eStartdate = document.querySelector('#formModifierEvenement [name=startdate]')
     let eEnddate = document.querySelector('#formModifierEvenement [name=enddate]')
+    let ecat = document.querySelector('#formModifierEvenement [name=categorieM]')
 
 
     const {
@@ -36,6 +37,7 @@ export function remplirFormulaire(evt) {
     eDescription.value = description
     eStartdate.value = stardt.substring(0, 10)
     eEnddate.value = enddt.substring(0, 10)
+    ecat.value = categorie
     eCategorieM.attr('selected')
     eHeureDebut.attr('selected', 'selected')
     eMinuteDebut.attr('selected', 'selected')

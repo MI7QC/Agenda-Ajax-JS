@@ -100,7 +100,7 @@
           <h5>Description</h5>
           <input type="text" id="description" type="input" name="description" value="description">
           <h5>Catégorie</h5>
-          <select id="categorieM">
+          <select name="categorieM" id="categorieM">
             <option value="Medecin">Medecin</option>
             <option value="Voyage">Voyage</option>
             <option value="Reunion">Reunion</option>
