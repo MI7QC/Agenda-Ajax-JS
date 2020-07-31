@@ -1,6 +1,6 @@
 <?php
 
-
+//connection a la BDD
 function connectDB()
 {
     $c = mysqli_connect("localhost", "root", "", "agendax");
@@ -28,23 +28,23 @@ function evenement()
 }
 
 // INSERT INTO evenement 
-function ajoutEvenement($date, $titre, $description, $categorie,  $stardt, $enddt)
+function ajoutEvenement($date, $titre, $description, $categorie, $couleur,  $stardt, $enddt)
 {
     global $connexion;
 
-    $requete = "INSERT INTO evenement (date, titre, description, categorie, stardt, enddt)
-                VALUES ('$date', '$titre', '$description', '$categorie' , '$stardt', '$enddt')";
+    $requete = "INSERT INTO evenement (date, titre, description, categorie, couleur, stardt, enddt)
+                VALUES ('$date', '$titre', '$description', '$categorie' , '$couleur' , '$stardt', '$enddt')";
     return mysqli_query($connexion, $requete);
 }
 
 
 // Update  modifierEvenement
-function modifierEvenement($id, $date, $titre, $description, $categorie, $stardt, $enddt)
+function modifierEvenement($id, $date, $titre, $description, $categorie, $couleur, $stardt, $enddt)
 {
     global $connexion;
 
     $requete = "UPDATE evenement 
-                SET  `date` = '$date',`titre` = '$titre', `description` = '$description',`categorie` = '$categorie',`stardt` = '$stardt',`enddt` = '$enddt'
+                SET  `date` = '$date',`titre` = '$titre', `description` = '$description',`categorie` = '$categorie',`couleur` = '$couleur',`stardt` = '$stardt',`enddt` = '$enddt'
                 WHERE id=$id";
     return mysqli_query($connexion, $requete);
 }
@@ -63,7 +63,7 @@ function suprimerEvenement($id)
 
 
 /* RecupereId  */
-function RecupererId($id)
+function recupererId($id)
 {
     global $connexion;
 

@@ -1,3 +1,5 @@
+"use strict";
+
 import {
     mois
 } from "./utiliter";
@@ -33,10 +35,49 @@ export function afficheGrille(tabDate, serveurDate, jour, moisEnChiffre, annee) 
         tabDate.splice(0, compteTab)
     }
 
+
+    let affichageDate = document.getElementById("affichageDate").appendChild(h2)
+
+    affichageDate.innerHTML = mois(compteurMois) + " " + compteurAnnee;
+
+    let clickCountStorage = localStorage.getItem('clickCount')
+    let clickCount;
+
+    if (clickCountStorage) {
+        clickCount = +clickCountStorage
+    } else {
+        clickCount = 0
+    }
+
+    function optionAfficherDate() {
+        switch (clickCount % 3) {
+            case 0:
+                affichageDate.innerHTML = jour + " " + mois(compteurMois) + " " + compteurAnnee;
+                break;
+            case 1:
+                affichageDate.innerHTML = mois(compteurMois) + " " + jour + " " + compteurAnnee;
+                break;
+            case 2:
+                affichageDate.innerHTML = mois(compteurMois) + " " + compteurAnnee;
+                break;
+        }
+    }
+
+    // function click qui permet de changer le style de l'heure
+    $('#changeHeure').click(function() {
+        clickCount += 1;
+        localStorage.setItem('clickCount', clickCount)
+        optionAfficherDate()
+    })
+
+    //function qui affiche la grille du calendrier 
     function creerGrille() {
         let daysInMonth = getDaysInMonth(compteurMois, annee);
         let jourDuMois = 1;
-        document.getElementById("affichageDate").appendChild(h2).innerHTML = mois(compteurMois) + " " + compteurAnnee;
+
+
+        optionAfficherDate()
+
         table = document.querySelector("table");
 
         supprimerLaGrille()
@@ -70,6 +111,7 @@ export function afficheGrille(tabDate, serveurDate, jour, moisEnChiffre, annee) 
                         document.getElementById("dateF").setAttribute("value", dateSelectionnerValue)
                     })
 
+
                     tabDate.push(dateString);
                     jourDuMois++;
                 }
@@ -81,9 +123,7 @@ export function afficheGrille(tabDate, serveurDate, jour, moisEnChiffre, annee) 
 
     creerGrille()
 
-    /*
-     * Changer de mois quand on clique les fleches
-     */
+    //Changer de mois quand on clique les fleches
     let btnSuivant = $('#next')
     let btnPrecedent = $('#prev')
 

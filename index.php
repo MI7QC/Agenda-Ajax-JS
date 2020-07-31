@@ -17,19 +17,16 @@
 
 <body>
   <!-- SECTION AFFICHE AGENDA + AJOUTER EVENEMENTS -->
-
   <div id="main">
-
-
-    <!-- <button id="changeHeure" class="fas fa-clock" type="button" ></button> -->
 
     <h1>Agendax</h1>
 
     <div id="menu">
-      <div><button class="openbtn" onclick="openNav()">☰ Modifier Evenement</button></div>
-      <div><button class="openbtn1" onclick="openNav1()">☰ Ajouter Evenement.</button></div>
+      <div><button id="openbtn" class="openbtn">☰ Modifier Evenement</button></div>
+      <div><button id="openbtn1" class="openbtn1">☰ Ajouter Evenement.</button></div>
       <div><button id="afficher-mois" class="openbtn2">☰ Afficher mois.</button></div>
       <div><button id="afficher-semaine" class="openbtn3">☰ Afficher semaine.</button></div>
+      <button id="changeHeure" class="fas fa-clock" type="button"></button>
     </div>
 
     <div id="aligner">
@@ -37,6 +34,7 @@
       <!-- AFFICHAGE CALENDRIER -->
       <div id="affichageDate"></div>
       <i id="next" class="fa fa-chevron-right" aria-hidden="true"></i>
+
     </div>
 
     <div id="separation"></div>
@@ -45,7 +43,7 @@
 
     <!-- LA SIDE BOARD AVEC FORUMULAIRE -->
     <div id="mySidebar1" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn1" onclick="closeNav1()">X</a>
+      <a class="closebtn1" id="closeNav1">X</a>
       <h3>Ajouter Evenements</h3>
       <div id="agenda">
         <form id="eventForm">
@@ -67,6 +65,18 @@
             <option value="Garage">Garage</option>
             <option value="Sortie">Sortie</option>
             <option value="Yogo">Yogo</option>
+          </select>
+          <select id="couleurA">
+            <option value="red">Rouge</option>
+            <option value="yellow">Jaune</option>
+            <option value="orange">Orange</option>
+            <option value="green">Vert</option>
+            <option value="blue">Bleu</option>
+            <option value="pink">Rose</option>
+            <option value="gray">Gris</option>
+            <option value="cyan">Cyan</option>
+            <option value="purple">Mauve</option>
+            <option value="navy">Navy</option>
           </select>
           <h5>Date Début</h5>
           <input type="text" id="dateD" type="input" name="startdate" value="">
@@ -111,6 +121,18 @@
             <option value="Sortie">Sortie</option>
             <option value="Yogo">Yogo</option>
             <option value="Autre">Autre</option>
+          </select>
+          <select name="couleurM" id="couleurM">
+            <option value="red">Rouge</option>
+            <option value="yellow">Jaune</option>
+            <option value="orange">Orange</option>
+            <option value="green">Vert</option>
+            <option value="blue">Bleu</option>
+            <option value="pink">Rose</option>
+            <option value="gray">Gris</option>
+            <option value="cyan">Cyan</option>
+            <option value="purple">Mauve</option>
+            <option value="navy">Navy</option>
           </select>
           <h5>Date Début</h5>
           <input type="text" sid="dateD" type="input" name="startdate" value="">
@@ -293,13 +315,11 @@
             <option value="59">59Min</option>
           </select>
         </form>
-
         <button id="btnModifierEvenement">Modifier Événement</button>
-
       </div>
     </div>
 
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+    <a class="closebtn" id="closeNav">X</a>
     <h3>Modification des evenements</h3>
     <section>
 
@@ -311,6 +331,7 @@
             <th>Titre</th>
             <th>Description</th>
             <th>Categorie</th>
+            <th>Couleur</th>
             <th>Stardt</th>
             <th>Enddt</th>
           </tr>
@@ -320,63 +341,6 @@
       </table>
     </section>
   </div>
-
-
-
-
-
-
-
-
-  <script>
-    function openNav1() {
-      document.getElementById("mySidebar1").style.width = "400px";
-      document.getElementById("main").style.marginLeft = "400px";
-    }
-
-    function closeNav1() {
-      document.getElementById("mySidebar1").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
-    }
-
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "950px";
-      document.getElementById("main").style.marginLeft = "950px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
-    }
-  </script>
-  <script>
-    // recuperer modal
-    var modal = document.getElementById("myModal");
-
-
-
-    // recupere le span pour close
-    var span = document.getElementsByClassName("close")[0];
-
-    // quand user click ferme modal
-    document.getElementById('close-modal').onclick = function() {
-      modal.style.display = "none";
-    }
-
-
-    // quand user click <span> (x), ferme le modal
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    // quand user click out side de box sa ferme
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
-
 </body>
 
 </html>

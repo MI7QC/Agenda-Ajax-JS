@@ -1,3 +1,5 @@
+"use strict";
+
 // Donner la reponse du serveur a "appelSucces"
 export function appelAfficheEvenement(appelSucces) {
     let ajax = new XMLHttpRequest();

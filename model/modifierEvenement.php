@@ -9,11 +9,12 @@ $date = $data['date'];
 $titre = $data['titre'];
 $description = $data['description'];
 $categorie = $data['categorie'];
+$couleur = $data['couleur'];
 $stardt = $data['stardt'];
 $enddt = $data['enddt'];
 
 // 2. Appeler "modifier evenement"
-$succes = modifierEvenement($id, $date, $titre, $description, $categorie, $stardt, $enddt);
+$succes = modifierEvenement($id, $date, $titre, $description, $categorie, $couleur, $stardt, $enddt);
 
 // 3. Repondre a la requete
 echo $succes ? "Evenement modifie" : "Erreur";

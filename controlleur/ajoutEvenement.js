@@ -1,3 +1,4 @@
+"use strict";
 export function ajoutEvenement() {
 
     //recuperation des champ input 
@@ -14,6 +15,7 @@ export function ajoutEvenement() {
             let date = $("input[name=date]").val();
             let description = $("input[name=description]").val();
             let categorie = $("#categorieA option:selected").val();
+            let couleur = $("#couleurA option:selected").val();
             let stardt = date + " " + heureDebut + ":" + minuteDebut;
             let enddt = date + " " + heureFin + ":" + minuteFin;
 
@@ -21,16 +23,17 @@ export function ajoutEvenement() {
 
 
 
-            ajoutDonnee(date, titre, description, categorie, stardt, enddt);
+            ajoutDonnee(date, titre, description, categorie, couleur, stardt, enddt);
             window.location.reload()
 
         });
     });
 
     /*
+     * function ajoutDonnee
      * Ajout des evenements method POST 
      */
-    function ajoutDonnee(date, titre, description, categorie, stardt, enddt) {
+    function ajoutDonnee(date, titre, description, categorie, couleur, stardt, enddt) {
         let ajax = new XMLHttpRequest();
         let method = "POST";
         let url = "model/ajoutEvenement.php";
@@ -46,6 +49,7 @@ export function ajoutEvenement() {
             titre: titre,
             description: description,
             categorie: categorie,
+            couleur: couleur,
             stardt: stardt,
             enddt: enddt
         }

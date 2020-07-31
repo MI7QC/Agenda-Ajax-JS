@@ -83,7 +83,16 @@ ul {
 
 #menu {
     display: flex;
-    padding: 15px 0;
+    padding: 25px;
+    justify-content: center;
+}
+
+#openbtn,
+#openbtn1,
+#afficher-mois,
+#afficher-semaine,
+#changeHeure {
+    margin-left: 25px;
 }
 
 
@@ -127,6 +136,13 @@ h3 {
     padding: 10px;
 }
 
+.fas:hover {
+    color: rgb(38, 17, 133);
+    cursor: pointer;
+}
+
+#changeHeure {}
+
 
 /* side bar option par defaul*/
 
@@ -162,10 +178,12 @@ h3 {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    cursor: pointer;
 }
 
 .closebtn1 {
     float: right;
+    cursor: pointer;
 }
 
 .openbtn,
@@ -238,7 +256,7 @@ h3 {
     /* Location of the box */
     left: 0;
     top: 0;
-    width: 850px;
+    width: 1000px;
     /* Full width */
     height: 100%;
     /* Full height */

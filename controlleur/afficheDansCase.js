@@ -1,10 +1,22 @@
+"use strict";
 import {
     remplirFormulaire,
     soumettreFormulaire
 } from "./modifierEvenement";
 
+import {
+    suprimerEvenement,
+} from "./suprimerEvenement";
+
+import {
+    recupererId,
+} from "./recupererId";
+
 export function afficheDansCase(serveurDate, idCalendrier) {
 
+    // afficheDansCase ajoute les events dans la sidebar modifier-evenements
+    let mySidebar = document.querySelector("#modificationEvent");
+    mySidebar.innerHTML = "";
 
     serveurDate.forEach((dateDuServeur, index) => {
 
@@ -12,7 +24,7 @@ export function afficheDansCase(serveurDate, idCalendrier) {
         if (indexDansCalendrier != -1) {
 
             let journee = $(`#date-${dateDuServeur.date}`);
-            journee.css('background', 'green') // TODO: categorie
+            journee.css('background', dateDuServeur.couleur)
 
             /*
              * Mettre les evenements dans calendrier 
@@ -61,13 +73,14 @@ export function afficheDansCase(serveurDate, idCalendrier) {
                     let eIcone = document.createElement("i");
                     eTrEvenement.appendChild(ePEvenement).appendChild(eIcone);
                     eTrEvenement.appendChild(ePEvenement).setAttribute("class", "far fa-edit");
-
                     // bind le click au bouton edit
                     ePEvenement.addEventListener("click", function() {
                         let id = Object.values(serveurDate[index])[0];
-                        RecupererId(id)
+                        recupererId(id)
 
                         document.getElementById("myModal").style.visibility = "visible";
+
+                        var modal = document.getElementById("myModal");
 
                         modal.style.display = "block";
                         remplirFormulaire(dateDuServeur)
@@ -79,61 +92,4 @@ export function afficheDansCase(serveurDate, idCalendrier) {
             }
         }
     });
-
-
-    // fonction suprimer evenement 
-    function suprimerEvenement(id) {
-        let ajax = new XMLHttpRequest();
-        let method = "DELETE";
-        let url = "model/suprimerEvenement.php";
-        let asynchronous = true;
-
-        ajax.open(method, url, asynchronous);
-
-        // Dire a XMLHttpRequest que j'envoie du JSON: "{...}"
-        ajax.setRequestHeader("Content-Type", "application/json")
-
-        let data = {
-            id: id
-
-        }
-        ajax.send(JSON.stringify(data));
-
-        ajax.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-
-            }
-        }
-
-    }
-    // fonction recupere id evenement 
-    function RecupererId(id) {
-        let ajax = new XMLHttpRequest();
-        let method = "GET";
-        let url = "model/RecupererId.php";
-        let asynchronous = true;
-
-        ajax.open(method, url, asynchronous);
-
-        // Dire a XMLHttpRequest que j'envoie du JSON: "{...}"
-        ajax.setRequestHeader("Content-Type", "application/json")
-
-        let data = {
-            id: id
-
-        }
-        ajax.send(JSON.stringify(data));
-
-        ajax.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-
-
-            }
-        }
-
-    }
-
-
 }

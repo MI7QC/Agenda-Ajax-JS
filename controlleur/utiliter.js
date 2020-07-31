@@ -1,3 +1,4 @@
+"use strict";
 export function jour() {
     let jour = new Date();
     return jour.getDate();
