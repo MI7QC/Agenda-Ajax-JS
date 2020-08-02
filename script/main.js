@@ -3,26 +3,26 @@ import {
     jour,
     moisEnChiffre,
     annee
-} from "../controlleur/utiliter";
+} from "../controlleur/utiliter.js";
 import {
     appelAfficheEvenement
-} from "../controlleur/afficheEvenement";
+} from "../controlleur/afficheEvenement.js";
 import {
     afficheGrille
-} from "../controlleur/afficheGrille";
+} from "../controlleur/afficheGrille.js";
 import {
     afficheGrilleSemaine
-} from "../controlleur/afficheGrilleSemaine"
+} from "../controlleur/afficheGrilleSemaine.js"
 import {
     ajoutEvenement,
     genererDropdownHeures
-} from "../controlleur/ajoutEvenement";
+} from "../controlleur/ajoutEvenement.js";
 import {
     afficheDansCase
-} from "../controlleur/afficheDansCase";
+} from "../controlleur/afficheDansCase.js";
 import {
     soumettreFormulaire
-} from "../controlleur/modifierEvenement"
+} from "../controlleur/modifierEvenement.js"
 
 //Local storage pour le mois et semaine
 let mois = localStorage.getItem('compteurMois');

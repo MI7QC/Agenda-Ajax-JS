@@ -2,11 +2,11 @@
 
 import {
     mois
-} from "./utiliter";
+} from "./utiliter.js";
 
 import {
     afficheDansCase
-} from "./afficheDansCase";
+} from "./afficheDansCase.js";
 
 export function afficheGrille(tabDate, serveurDate, jour, moisEnChiffre, annee) {
     let compteurMois = moisEnChiffre;

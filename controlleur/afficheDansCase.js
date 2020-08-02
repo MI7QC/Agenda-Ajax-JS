@@ -2,15 +2,15 @@
 import {
     remplirFormulaire,
     soumettreFormulaire
-} from "./modifierEvenement";
+} from "./modifierEvenement.js";
 
 import {
     suprimerEvenement,
-} from "./suprimerEvenement";
+} from "./suprimerEvenement.js";
 
 import {
     recupererId,
-} from "./recupererId";
+} from "./recupererId.js";
 
 export function afficheDansCase(serveurDate, idCalendrier) {
 

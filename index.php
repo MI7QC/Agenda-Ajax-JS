@@ -251,7 +251,7 @@
             <option value="21">21H</option>
             <option value="22">22H</option>
             <option value="23">23H</option>
-          </select></select>
+          </select>
           <select id="minuteFinModifier">
             <option value="0">0Min</option>
             <option value="1">1Min</option>

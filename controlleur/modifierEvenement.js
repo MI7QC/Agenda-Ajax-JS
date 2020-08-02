@@ -133,7 +133,6 @@ function soumettreModifier({
         enddt: enddt
     }
     ajax.send(JSON.stringify(data));
-
     ajax.onreadystatechange = function() {
         if (ajax.readyState === XMLHttpRequest.DONE) {
             if (status == 0 || this.status == 200) {

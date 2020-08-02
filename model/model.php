@@ -1,10 +1,10 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 //connection a la BDD
 function connectDB()
 {
-    $c = mysqli_connect("localhost", "root", "", "agendax");
-
+    // $c = mysqli_connect("localhost", "root", "", "agendax");
+    $c = mysqli_connect("den1.mysql2.gear.host", "agendax", "Wd2cMx6?G6?H", "agendax");
     if (!$c)
         trigger_error("Erreur de connexion :" . msqli_connect_error());
 
